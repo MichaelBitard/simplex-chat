@@ -52,7 +52,9 @@ class NtfManager: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
                 chatModel.ntfCallInvitationAction = (chatId, ntfAction)
             }
         } else {
-            chatModel.chatId = content.targetContentIdentifier
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                chatModel.chatId = content.targetContentIdentifier
+            }
         }
         handler()
     }
